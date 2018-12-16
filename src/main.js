@@ -6,6 +6,7 @@ import router from './router'
 import ElementUI from 'element-ui';
 import Vuex from 'vuex'
 import 'element-ui/lib/theme-chalk/index.css';
+import store from './vuex/stork'
 
 // import Axios from "axios";
 
@@ -19,7 +20,7 @@ Vue.config.productionTip = false
 
 /* eslint-disable no-new */
 new Vue({
-
+  store,
   el: '#app',
   router,
   components: { App },

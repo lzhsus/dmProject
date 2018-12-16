@@ -4,19 +4,22 @@
       <el-col :span="20">
         <div class="grid-content">
           <ul>
-            <li class="active" @click="pageBtn(index)">
+              <li @click="pageBtn()">
+              <router-link to="/">首页</router-link>
+            </li>
+            <li :class="(page=='xq')?'active':''" @click="pageBtn()">
               <router-link to="/xiqu">戏剧</router-link>
             </li>
-            <li>
+            <li :class="page=='ty'?'active':''" @click="pageBtn()">
               <router-link to="/tiyu">体育</router-link>
             </li>
-            <li>
+            <li :class="(page=='qz')?'active':''" @click="pageBtn()">
               <router-link to="/qinzi">亲子</router-link>
             </li>
-            <li>
+            <li :class="page=='yg'?'active':''" @click="pageBtn()">
               <router-link to="/yaogun">摇滚</router-link>
             </li>
-            <li>
+            <li :class="page=='wd'?'active':''" @click="pageBtn()">
               <router-link to="/wudao">舞蹈经典</router-link>
             </li>
           </ul>
@@ -33,7 +36,6 @@
 </template>
 <script>
 import Swiper from "../swiper";
-import Axios from 'axios'
 
 export default {
   components: {
@@ -41,25 +43,16 @@ export default {
   },
   data() {
     return {
-      swiperImg: []
+
     };
   },
+  props:['swiperImg',"page"],
   mounted() {
-    Axios.get("http://127.0.0.1:3721/api/mock/indexswiper")
-      .then(res => {
-        this.swiperImg = res.data.data;
-        console.log(this.swiperImg);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+
   },
   methods:{
-    pageBtn(index){
-
-      // for(var i=0;i<$('li').length;i++){
-      //   console.log(index,i)
-      // }
+    pageBtn(){
+        console.log(this.page)
     }
   }
 };
@@ -79,7 +72,7 @@ li {
   float: left;
   height: 50px;
   line-height: 50px;
-  padding: 0 20px;
+
 }
 li a {
   text-decoration: none;
@@ -100,6 +93,15 @@ li a {
   height: 350px;
 }
 .grid-content li.active{
+  background-color: rgb(245, 196, 196);
+}
+a{
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+   padding: 0 20px;
+}
+a:hover{
   background-color: rgb(245, 196, 196);
 }
 </style>

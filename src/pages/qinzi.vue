@@ -2,17 +2,31 @@
   <div class="qinzi">
       <my-header></my-header>
      <div class="main">
-       <tiyu-nav></tiyu-nav>
+       <tiyu-nav :swiperImg="swiperImg" page="qz"></tiyu-nav>
      </div>
   </div>
 </template>
 <script>
 import MyHeader from '../components/MyHeader'
 import TiyuNav from '../components/tiyu/tiyuNav'
+import Axios from 'axios'
 export default {
   components:{
     MyHeader,
     TiyuNav
+  }, data() {
+    return {
+      swiperImg: []
+    };
+  },
+  mounted() {
+    Axios.get("http://127.0.0.1:3721/api/mock/swiper/qz")
+      .then(res => {
+        this.swiperImg = res.data.data;
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 }
 </script>

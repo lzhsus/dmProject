@@ -5,36 +5,36 @@
       <div class="cls_left_sp">
         <ul>
           <li class="active">
-            <img src="../assets/logo.png" alt srcset>
-            <span>演唱会</span>
+            <router-link to=""><img src="../assets/logo.png" alt srcset>
+            <span>演唱会</span></router-link>
           </li>
           <li>
-            <img src="../assets/logo.png" alt srcset>
-            <span>音乐会</span>
+           <router-link to=""> <img src="../assets/logo.png" alt srcset>
+            <span>音乐会</span></router-link>
           </li>
           <li>
-            <img src="../assets/logo.png" alt srcset>
-            <span>曲苑杂坛</span>
+             <router-link to=""><img src="../assets/logo.png" alt srcset>
+            <span>曲苑杂坛</span></router-link>
           </li>
           <li>
-            <img src="../assets/logo.png" alt srcset>
-            <span>话剧歌剧</span>
+             <router-link to=""><img src="../assets/logo.png" alt srcset>
+            <span>话剧歌剧</span></router-link>
           </li>
           <li>
-            <img src="../assets/logo.png" alt srcset>
-            <span>体育比赛</span>
+             <router-link to=""><img src="../assets/logo.png" alt srcset>
+            <span>体育比赛</span></router-link>
           </li>
           <li>
-            <img src="../assets/logo.png" alt srcset>
-            <span>芭蕾舞蹈</span>
+             <router-link to=""><img src="../assets/logo.png" alt srcset>
+            <span>芭蕾舞蹈</span></router-link>
           </li>
           <li>
-            <img src="../assets/logo.png" alt srcset>
-            <span>儿童亲子</span>
+            <router-link to=""> <img src="../assets/logo.png" alt srcset>
+            <span>儿童亲子</span></router-link>
           </li>
-           <li>
-            <img src="../assets/logo.png" alt srcset>
-            <span>动漫</span>
+          <li>
+             <router-link to=""><img src="../assets/logo.png" alt srcset>
+            <span>动漫</span></router-link>
           </li>
         </ul>
       </div>
@@ -49,7 +49,7 @@
             <router-link to="/tiyu">体育</router-link>
           </li>
           <li>
-             <router-link to="/qinzi">亲子</router-link>
+            <router-link to="/qinzi">亲子</router-link>
           </li>
           <li>
             <router-link to="/yaogun">摇滚</router-link>
@@ -66,22 +66,23 @@
   </div>
 </template>
 <script>
-import Swiper from './swiper'
-import Axios from 'axios'
+import Swiper from "./swiper";
+import Axios from "axios";
 export default {
-  components:{
+  components: {
     Swiper
   },
-  data(){
-    return{
-swiperImg:[]
-    }
+  data() {
+    return {
+      swiperImg: []
+    };
   },
-  mounted(){
-   Axios.get("http://127.0.0.1:3721/api/mock/indexswiper")
+  mounted() {
+    Axios.get("http://127.0.0.1:3721/api/mock/swiper/ty")
       .then(res => {
-        this.swiperImg=res.data.data
-        console.log(this.swiperImg)
+        this.swiperImg = res.data.data;
+
+        console.log(this.swiperImg);
       })
       .catch(err => {
         console.log(err);
@@ -139,10 +140,11 @@ ul::after {
   width: 100%;
   height: 44px;
   line-height: 44px;
-  padding-left: 30px;
-  display: flex;
+  /* padding-left: 30px; */
+  /* display: flex;
   justify-content: space-around;
-  align-items: center;
+  align-items: center; */
+  position: relative;
 }
 .cls_left_sp li::after {
   display: block;
@@ -151,22 +153,46 @@ ul::after {
 }
 .cls_left_sp li.active {
   background-color: #868683;
-  opacity: 0.5;
+
 }
 .cls_left_sp li img {
   width: 26px;
   height: 26px;
-  float: left;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%)
 }
 .cls_left_sp li span {
   width: 100%;
   text-align: left;
-  margin-left: 10px;
+  margin-left: 30px;
 }
-.cls_right_swiper{
+.cls_right_swiper {
   background-color: red;
   width: 100%;
   height: 350px;
 }
-
+.cls_right_nav li{
+  padding: 0;
+}
+.cls_right_nav a{
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+   padding: 0 20px;
+}
+.cls_right_nav a:hover{
+  background-color:rgb(245, 196, 196);
+}
+.cls_left_sp a{
+    display: inline-block;
+  width: 100%;
+  height: 100%;
+  padding-left: 30px;
+  text-decoration: none;
+  color: #fff;
+}
+.cls_left_sp a:hover{
+  background-color: red;
+}
 </style>
