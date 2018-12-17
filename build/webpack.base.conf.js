@@ -21,8 +21,7 @@ module.exports = {
     path: config.build.assetsRoot,
     filename: '[name].js',
     publicPath: process.env.NODE_ENV === 'production' ?
-      config.build.assetsPublicPath :
-      config.dev.assetsPublicPath
+      config.build.assetsPublicPath : config.dev.assetsPublicPath
   },
 
   resolve: {
@@ -30,7 +29,7 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
-      "path":resolve('src/pages')
+      "path": resolve('src/pages')
     }
   },
   module: {
@@ -71,13 +70,21 @@ module.exports = {
       {
         test: require.resolve('zepto'),
         loader: 'exports-loader?window.Zepto!script-loader'
+      },
+      {
+        test: /\.less$/,
+        loader: "style-loader!css-loader!less-loader",
       }
     ]
   },
   plugins: [
+    new webpack.optimize.CommonsChunkPlugin('common.js'),
+
     new webpack.ProvidePlugin({
       $: 'zepto',
-      Zepto: 'zepto'
+      Zepto: 'zepto',
+      jQuery: "jquery",
+      $: "jquery"
     }),
   ],
   node: {

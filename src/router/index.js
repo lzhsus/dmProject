@@ -9,6 +9,7 @@ import wudao from '@/pages/wudao'
 import loginDL from '@/pages/loginDL'
 import loginZC from '@/pages/loginZC'
 import mainMsg from '@/pages/mainMsg'
+import caty from '../components/caty/caty'
 
 Vue.use(Router)
 
@@ -63,6 +64,11 @@ export default new Router({
       path:'/main',
       name:'main',
       component:mainMsg
+    },
+    {
+      path:'/caty',
+      name:'caty',
+      component:caty
     }
   ],
   mode: 'history',

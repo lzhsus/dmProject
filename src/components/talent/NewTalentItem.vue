@@ -13,14 +13,14 @@
       </div>
       <div class="price">
         票价：
-        <span>{{price}}</span>
+        <span>{{price}}</span>起
       </div>
     </div>
   </div>
 </template>
 <script>
 export default {
-  name: "talentitem",
+  name: "newtalentitem",
   data() {
     return {};
   },
@@ -30,11 +30,11 @@ export default {
 </script>
 <style scoped>
 .talentitem {
-  width: 290px;
+  width: 390px;
   display: flex;
   justify-content: space-around;
   /* background-color: rgb(121, 73, 73); */
-  height: 160px;
+  height: 100px;
   box-sizing: border-box;
 }
 .img {
@@ -48,7 +48,7 @@ export default {
 }
 
 .talent_msg .tit {
-  font-size: 16px;
+  font-size: 14px;
   color: #000;
   width: 160px;
   margin: 0 10px;
@@ -59,7 +59,7 @@ export default {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   line-clamp: 2;
-  margin-bottom: 40px;
+  /* margin-bottom: 40px; */
 }
 .address,
 .time,
@@ -68,9 +68,9 @@ export default {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  padding: 4px 10px;
+  padding: 2px 10px;
   color: #999;
-  font-size: 14px;
+  font-size: 12px;
 }
 .price span{
   color: orangered;

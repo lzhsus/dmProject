@@ -13,19 +13,10 @@
               </div>
             </el-col>
             <el-col :lg="3" :md="5" :sm="9" :xs="9">
-              <el-dropdown trigger="click">
-                <span class="el-dropdown-link">
-                  {{address}}
-                  <i class="el-icon-caret-bottom"></i>
-                </span>
-                <el-dropdown-menu slot="dropdown">
-                  <el-dropdown-item>上海站</el-dropdown-item>
-                  <el-dropdown-item>海南站</el-dropdown-item>
-                  <el-dropdown-item>深圳站</el-dropdown-item>
-                  <el-dropdown-item>四川站</el-dropdown-item>
-                  <el-dropdown-item>湖北站</el-dropdown-item>
-                </el-dropdown-menu>
-              </el-dropdown>
+             <div class="caty">
+               <caty></caty>
+
+             </div>
             </el-col>
             <el-col :lg="17" :md="11" :sm="3" :xs="1">
               <div class="grid-content bg-purple-light"></div>
@@ -58,7 +49,7 @@
                   >{{this.$store.state.userInfo?this.$store.state.userName:"登录"}}</span>
 
                   <!-- <router-link to="/lgzc"> -->
-                    <span @click="zc">{{this.$store.state.userInfo?"退出":"注册"}}</span>
+                  <span @click="zc">{{this.$store.state.userInfo?"退出":"注册"}}</span>
                   <!-- </router-link> -->
                 </div>
               </div>
@@ -88,8 +79,10 @@
   </el-container>
 </template>
 <script>
+import caty from './caty/caty'
 export default {
   name: "MyHeader",
+
   data() {
     return {
       input: "",
@@ -99,6 +92,7 @@ export default {
       count: ""
     };
   },
+
   components: {
     userInfo() {
       this.$store.state.userInfo = this.userInfo;
@@ -106,7 +100,11 @@ export default {
     },
     count() {
       this.$store.state.count = this.count;
-    }
+    },
+    caty
+  },
+  mounted() {
+    console.log();
   },
   methods: {
     // 登录
@@ -116,30 +114,33 @@ export default {
           message: "您已登录，无需重复登录",
           type: "success"
         });
+        this.$router.push({ path: "/main" });
       } else {
         this.$router.push({ path: "/lgdl" });
       }
     },
     // 注册
-    zc(){
-       if (this.$store.state.userInfo) {
-       this.$confirm('您将退出登录, 是否继续?', '提示', {
-          confirmButtonText: '确定退出',
-          cancelButtonText: '取消',
-          type: 'warning'
-        }).then(() => {
-          this.$message({
-            type: 'success',
-            message: '退出登录成功!'
+    zc() {
+      if (this.$store.state.userInfo) {
+        this.$confirm("您将退出登录, 是否继续?", "提示", {
+          confirmButtonText: "确定退出",
+          cancelButtonText: "取消",
+          type: "warning"
+        })
+          .then(() => {
+            this.$message({
+              type: "success",
+              message: "退出登录成功!"
+            });
+            this.$store.state.userName = "登录";
+            this.$store.state.userInfo = false;
+          })
+          .catch(() => {
+            this.$message({
+              type: "info",
+              message: "取消退出"
+            });
           });
-          this.$store.state.userName="登录"
-          this.$store.state.userInfo=false
-        }).catch(() => {
-          this.$message({
-            type: 'info',
-            message: '取消退出'
-          });
-        });
       } else {
         this.$router.push({ path: "/lgdl" });
       }
@@ -172,7 +173,7 @@ export default {
   color: #606266;
 }
 @media all and (min-width: 768px) {
-  .user span{
+  .user span {
     float: left;
     display: block;
     overflow: hidden;
@@ -182,7 +183,6 @@ export default {
   .user-name {
     width: 70px;
     text-align: left;
-
   }
 }
 @media all and (min-width: 769px) and (max-width: 992px) {

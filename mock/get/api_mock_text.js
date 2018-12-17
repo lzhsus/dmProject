@@ -4,7 +4,7 @@ module.exports = function () {
       "success": "string",
       "errorCode": "string",
       "msg": "",
-      "data|1-4": [{
+      "data|6-6": [{
         "id": '@string("number", 2)',
         "itemName": '@csentence(5)',
         "imgUrl": 'https://pimg.dmcdn.cn/perform/project/1381/138121_n.jpg',

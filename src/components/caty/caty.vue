@@ -1,0 +1,180 @@
+<template>
+  <div class="caty">
+    <input type="text" class="search" v-model="value">
+    <i class="el-icon-arrow-right"></i>
+  </div>
+
+</template>
+<script>
+import  '../../assets/lib/js/kuCity'
+export default {
+  data(){
+return{
+  value:'上海'
+}
+  },
+  mounted(){
+    $('.search').kuCity();
+  }
+}
+</script>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+}
+input{
+  width: 80px;
+  height: 30px;
+  line-height: 30px;
+  text-align:right;
+  border: 0;
+  -webkit-tap-highlight-color:transparent;
+  outline: none;
+}
+input[type=text]:focus, select:focus{
+	border:1px solid #3879d9;
+	outline:none;
+}
+.caty{position: relative;}
+.caty i{
+  font-size: 12px;
+  position: absolute;
+  top: 24px;
+  left:80px;
+}
+.kucity{
+    font-family: "微软雅黑";
+    font-size:12px;
+    position: absolute;
+    top:50px;
+    left:50px;
+    width: 317px;
+    *border:1px solid #dedede;
+    box-shadow: 0 0 5px 1px #dedede;
+    padding:10px;
+    z-index: 9999;
+    background-color: #fff;
+}
+.kucity h3{
+    font-size:12px;
+    font-weight: normal;
+    color:#666;
+}
+.kucity .kucity_nav{
+    font-size:0;
+    padding-top:10px;
+    list-style: none;
+}
+.kucity .kucity_nav li{
+    cursor: pointer;
+    font-size:12px;
+    margin-left:-1px;
+    border:1px solid  #dedede;
+    display: inline-block;
+    color:#666;
+    padding:3px 7px;
+    transition:all .2s;
+}
+.kucity .kucity_nav li.active{
+    background-color: rgb(4, 168, 253);
+    border-color:rgb(4, 168, 253);
+    color:#fff;
+}
+
+/*kucity_body*/
+
+.kucity .kucity_body{
+    padding:10px 5px;
+    max-height: 230px;
+    overflow-y:auto;
+}
+.kucity .kucity_body .kucity_item{
+    display: none;
+}
+.kucity .kucity_body .kucity_item.active{
+    display: block;
+}
+.kucity_item dt, .kucity_item dd{
+    display: inline-block;
+}
+.kucity_item dl{
+    padding:3px 0;
+}
+.kucity_item dt{
+    color:rgb(32, 117, 249);
+    padding-top:3px;
+    vertical-align: top;
+    width:10%;
+}
+.kucity_item dd{
+    width:90%;
+}
+.kucity_item dd span{
+    width: 24%;
+    display: inline-block;
+    cursor: pointer;
+    padding:3px 0;
+    border:1px solid #fff;
+    transition:all .3s;
+}
+.kucity_item dd span:hover{
+    color:rgb(4, 168, 253);
+    text-decoration: underline;
+}
+
+.kucity .result{
+    list-style: none;
+}
+.kucity .result li{
+    padding:5px;
+    background-color: #fff;
+    margin:2px 0;
+    cursor: pointer;
+    overflow: hidden;
+}
+.kucity .result li.active, .kucity .result li.active .letter{
+    background-color: rgb(4, 168, 253);
+    color:#fff;
+}
+.kucity .result li .letter{
+    float:right;
+    color:#999;
+}
+.kucity .result li .noresult{
+    padding:0 8px;
+    color:rgb(253, 130, 27);
+}
+.kucity .result li:hover, .kucity .result li:hover > .letter{
+    background-color: rgb(4, 168, 253);
+    color:#fff!important;
+}
+
+/*滚动条*/
+.kucity_body::-webkit-scrollbar
+{
+    width: 5px;
+    height: 16px;
+    background-color: #F5F5F5;
+}
+
+/*定义滚动条轨道 内阴影+圆角*/
+.kucity_body::-webkit-scrollbar-track
+{
+    border-radius: 10px;
+    background-color: #F5F5F5;
+}
+
+/*定义滑块 内阴影+圆角*/
+.kucity_body::-webkit-scrollbar-thumb
+{
+    border-radius: 5px;
+    background-color: #dedede;
+}
+.kucity_body::-webkit-scrollbar-thumb:hover{
+    background-color: #999;
+}
+
+</style>
+
